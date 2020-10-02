@@ -1,13 +1,16 @@
 {
   "name": "@gravitywelluk/eslint-plugin",
-  "version": "1.0.11",
   "description": "Gravitywell defined ESLint rule sets as a ESLint plugin",
-  "main": "dist/index.js",
+  "version": "1.0.11",
   "repository": "git@github.com:GravitywellUK/eslint-plugin.git",
   "bugs": {
     "url": "https://github.com/GravitywellUK/eslint-plugin/issues"
   },
   "author": "GravitywellUK",
+  "contributors": [
+    "Luke Baker <luke.baker@live.com>"
+  ],
+  "main": "dist/index.js",
   "license": "MIT",
   "private": false,
   "engines": {
@@ -28,9 +31,9 @@
     "tsc:build": "yarn && yarn tsc -b",
     "tsc:build-clean": "rm -Rf dist/ && yarn tsc:build",
     "tsc:watch": "yarn tsc -w",
-    "eslint": "./node_modules/eslint/bin/eslint.js",
-    "eslint:fix": "yarn eslint ./ --fix --ext .js,.ts",
-    "eslint:debug": "yarn eslint ./ --debug",
+    "eslint": "eslint ./ --ext .js,.ts",
+    "eslint:fix": "yarn eslint --fix",
+    "eslint:debug": "yarn eslint --debug",
     "post-checkout": "yarn",
     "pre-commit": "yarn eslint:fix",
     "pre-push": "yarn tsc:build-clean"

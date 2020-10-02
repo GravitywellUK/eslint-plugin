@@ -47,6 +47,10 @@ jobs:
           node-version: 12.x
           registry-url: "https://registry.npmjs.org"
 
+      # Check linting succeeds
+      - name: Check linting succeeds
+        run: yarn eslint
+
       # Build the package
       - name: Build the package
         run: yarn tsc:build-clean

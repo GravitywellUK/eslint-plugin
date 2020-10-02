@@ -1,0 +1,32 @@
+# Continuous Integration
+name: CI
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-publish:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Setup Node.js environment
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1.4.3
+        with:
+          node-version: 12.x
+
+      # Check linting succeeds
+      - name: Check linting succeeds
+        run: yarn eslint
+
+      # Ensure package build successfully
+      - name: Ensure package build successfully
+        run: yarn tsc:build-clean
