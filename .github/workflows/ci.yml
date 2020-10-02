@@ -23,6 +23,10 @@ jobs:
         with:
           node-version: 12.x
 
+      # Install package dependencies
+      - name: Install package dependencies
+        run: yarn
+
       # Check linting succeeds
       - name: Check linting succeeds
         run: yarn eslint

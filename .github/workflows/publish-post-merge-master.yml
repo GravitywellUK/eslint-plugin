@@ -47,6 +47,10 @@ jobs:
           node-version: 12.x
           registry-url: "https://registry.npmjs.org"
 
+      # Install package dependencies
+      - name: Install package dependencies
+        run: yarn
+
       # Check linting succeeds
       - name: Check linting succeeds
         run: yarn eslint
