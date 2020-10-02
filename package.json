@@ -26,6 +26,7 @@
     "LICENSE"
   ],
   "scripts": {
+    "check:clean-diff-after-install": "git diff --quiet --exit-code",
     "git-branch-is": "./node_modules/git-branch-is/bin/git-branch-is.js",
     "tsc": "./node_modules/.bin/tsc",
     "tsc:build": "yarn && yarn tsc -b",
