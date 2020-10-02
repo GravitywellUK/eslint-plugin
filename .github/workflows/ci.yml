@@ -5,6 +5,9 @@ name: CI
 # or API.
 on:
   pull_request:
+    types:
+      - opened
+      - synchronize
     branches:
       - master
 
