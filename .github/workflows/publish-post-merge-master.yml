@@ -66,7 +66,6 @@ jobs:
       - name: Double check that no code has changed
         run: yarn check:clean-diff-after-install
 
-
       # Check that the Git branch is master
       - name: Check that the Git branch is master
         run: yarn git-branch-is master
