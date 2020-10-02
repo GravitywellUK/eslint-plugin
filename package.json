@@ -2,6 +2,14 @@
   "name": "@gravitywelluk/eslint-plugin",
   "description": "Gravitywell defined ESLint rule sets as a ESLint plugin",
   "version": "1.0.11",
+  "keywords": [
+    "gravitywell",
+    "gravitywelluk",
+    "typescript-eslint",
+    "eslint",
+    "react-eslint",
+    "react-native-eslint"
+  ],
   "repository": "git@github.com:GravitywellUK/eslint-plugin.git",
   "bugs": {
     "url": "https://github.com/GravitywellUK/eslint-plugin/issues"
