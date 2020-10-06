@@ -10,8 +10,8 @@ export = {
   "@typescript-eslint/array-type": [
     "error",
     {
-      default: "array",
-      readonly: "array"
+      default: "array-simple",
+      readonly: "array-simple"
     }
   ]
 };
