@@ -4,15 +4,27 @@ name: CI
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
+  push:
+    paths-ignore:
+      - '.vscode/**'
+      - '.gitignore'
+      - 'LICENSE'
+      - '**.md'
+    branches:
+      - master
+
   pull_request:
     types:
       - opened
       - synchronize
     branches:
-      - master
+      - '**'
+
+env:
+  NODE_VERSION: 12
 
 jobs:
-  build-and-publish:
+  build-and-test:
     name: Build and test
     runs-on: ubuntu-latest
     steps:
@@ -20,11 +32,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: echo github.ref
+        run: echo ${{ github.ref }}
+
       # Setup Node.js environment
       - name: Setup Node.js environment
-        uses: actions/setup-node@v1.4.3
+        uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: ${{ env.NODE_VERSION }}
 
       # Get yarn cache directory path
       - name: Get yarn cache directory path
@@ -48,14 +63,102 @@ jobs:
         # --ignore-scripts  - don't run lifecycle scripts
         run: yarn --ignore-engines --frozen-lockfile --ignore-scripts
 
-      # Check linting succeeds
-      - name: Check linting succeeds
-        run: yarn eslint:fix
-
       # Ensure package build successfully
       - name: Ensure package build successfully
-        run: yarn tsc:build-clean
+        run: yarn build
+
+      # Check linting succeeds
+      - name: Check linting succeeds
+        run: yarn lint:fix
 
       # Double check that no code has changed
       - name: Double check that no code has changed
         run: yarn check:clean-diff-after-install
+
+  publish-version:
+    name: Build and publish
+    if: github.ref == 'refs/heads/master' && !contains(toJSON(github.event.head_commit.message), 'Chore(bumped version to')
+    needs: [build-and-test]
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          token: ${{ secrets.GH_AUTH_TOKEN }}
+
+      - name: echo github.ref
+        run: echo ${{ github.ref }}
+
+      # Verify head of master hasn't changed
+      - name: Verify head of master hasn't changed
+        run: |
+          # We ensure that the latest commit on master is still the one we expected when
+          # we started the release job, otherwise we exit
+          if [ "$GITHUB_SHA" != "$(git rev-parse --verify HEAD)" ]; then
+              echo "ERROR: The commit SHA at the HEAD of master has changed"
+              echo "Expected: $GITHUB_SHA"
+              echo "Actual: $(git rev-parse --verify HEAD)"
+              exit 1;
+          fi
+
+      # Setup Node.js environment
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: "https://registry.npmjs.org"
+
+      # Get yarn cache directory path
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      # Retrieve cached dependencies
+      - name: Retrieve cached dependencies
+        uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # Install package dependencies
+      - name: Install package dependencies
+        # --ignore-engines  - ignore engines check
+        # --frozen-lockfile - don't generate a lockfile and fail if an update is needed
+        # --ignore-scripts  - don't run lifecycle scripts
+        run: yarn --ignore-engines --frozen-lockfile --ignore-scripts
+
+      # Ensure package build successfully
+      - name: Ensure package build successfully
+        run: yarn build
+
+      # Check linting succeeds
+      - name: Check linting succeeds
+        run: yarn lint:fix
+
+      # Double check that no code has changed
+      - name: Double check that no code has changed
+        run: yarn check:clean-diff-after-install
+
+      # Configure GitHub config - required for github release to work
+      - name: Configure GitHub config
+        run: |
+          git config user.name '${{ secrets.GH_USERNAME }}'
+          git config user.email '${{ secrets.GH_EMAIL }}'
+
+      # Bump the package version
+      - name: Bump the package version
+        run: npm version patch -m "Chore(bumped version to %s)"
+
+      # Push the bumped version back to GitHub
+      - name: Push the bumped version back to GitHub
+        run: git push --follow-tags
+
+      # Publish the package
+      - name: Publish the package
+        run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}

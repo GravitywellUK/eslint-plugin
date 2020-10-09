@@ -2,7 +2,6 @@
 <p align="center">Gravitywell defined ESLint rule sets for ESLint.</p>
 <p align="center">
   <img src="https://github.com/GravitywellUK/eslint-plugin/workflows/CI/badge.svg" alt="CI" />
-  <img src="https://github.com/GravitywellUK/eslint-plugin/workflows/Publish%20post-push%20master/badge.svg" alt="Publish post-push master" />
 </p>
 <br />
 
