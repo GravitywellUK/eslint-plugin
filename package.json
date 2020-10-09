@@ -35,19 +35,17 @@
     "LICENSE"
   ],
   "scripts": {
+    "build": "./node_modules/.bin/tsc -b",
+    "start": "yarn build -w",
+    "clean": "rm -Rf dist/ && yarn build --clean",
     "check:clean-diff-after-install": "git diff --quiet --exit-code",
-    "git-branch-is": "./node_modules/git-branch-is/bin/git-branch-is.js",
-    "tsc": "./node_modules/.bin/tsc",
-    "tsc:build": "yarn && yarn tsc -b",
-    "tsc:build-clean": "rm -Rf dist/ && yarn tsc:build",
-    "tsc:watch": "yarn tsc -w",
-    "eslint": "eslint ./ --ext .js,.ts",
-    "eslint:fix": "yarn eslint --fix",
-    "eslint:debug": "yarn eslint --debug",
+    "lint": "eslint . --ext .js,.ts",
+    "lint:fix": "yarn lint --fix",
+    "lint:debug": "yarn lint --debug",
     "post-checkout": "yarn",
-    "post-merge": "yarn tsc:build",
-    "pre-commit": "yarn eslint:fix",
-    "pre-push": "yarn tsc:build-clean"
+    "post-merge": "yarn && yarn build",
+    "pre-commit": "yarn lint:fix",
+    "pre-push": "yarn clean && yarn lint"
   },
   "husky": {
     "hooks": {
@@ -70,7 +68,6 @@
     "@gravitywelluk/eslint-plugin": "^1.0.1",
     "@types/node": "^14.11.2",
     "eslint": "^7.10.0",
-    "git-branch-is": "^4.0.0",
     "husky": "^4.3.0",
     "typescript": "^4.0.3"
   },
