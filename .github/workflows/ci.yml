@@ -71,8 +71,8 @@ jobs:
       - name: Check linting succeeds
         run: yarn lint:fix
 
-      # Double check that no code has changed
-      - name: Double check that no code has changed
+      # Check for code changes
+      - name: Check for code changes
         run: yarn check:clean-diff-after-install
 
   publish-version:
@@ -134,14 +134,6 @@ jobs:
       # Ensure package build successfully
       - name: Ensure package build successfully
         run: yarn build
-
-      # Check linting succeeds
-      - name: Check linting succeeds
-        run: yarn lint:fix
-
-      # Double check that no code has changed
-      - name: Double check that no code has changed
-        run: yarn check:clean-diff-after-install
 
       # Configure GitHub config - required for github release to work
       - name: Configure GitHub config
