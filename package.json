@@ -43,7 +43,7 @@
     "lint:fix": "yarn lint --fix",
     "lint:debug": "yarn lint --debug",
     "post-checkout": "yarn",
-    "post-merge": "yarn build",
+    "post-merge": "yarn && yarn build",
     "pre-commit": "yarn lint:fix",
     "pre-push": "yarn clean && yarn lint"
   },
