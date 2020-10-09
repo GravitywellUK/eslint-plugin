@@ -76,7 +76,7 @@ jobs:
         run: yarn check:clean-diff-after-install
 
   publish-version:
-    name: Build and publish
+    name: Publish version
     if: github.ref == 'refs/heads/master' && !contains(toJSON(github.event.head_commit.message), 'Chore(bumped version to')
     needs: [build-and-test]
     runs-on: ubuntu-latest
