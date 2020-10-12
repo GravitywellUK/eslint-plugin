@@ -1,7 +1,10 @@
 <h1 align="center">Gravitywell ESLint Plugin</h1>
 <p align="center">Gravitywell defined ESLint rule sets for ESLint.</p>
 <p align="center">
-  <img src="https://github.com/GravitywellUK/eslint-plugin/workflows/CI/badge.svg" alt="CI" />
+  <img src="https://img.shields.io/github/workflow/status/GravitywellUK/eslint-plugin/CI/master" alt="CI" />
+  <img src="https://img.shields.io/github/license/GravitywellUK/eslint-plugin" alt="License" />
+  <img src="https://img.shields.io/npm/dm/@gravitywelluk/eslint-plugin" alt="Downloads" />
+  <img src="https://img.shields.io/npm/v/@gravitywelluk/eslint-plugin" alt="Version" />
 </p>
 <br />
 
