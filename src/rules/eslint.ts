@@ -264,5 +264,6 @@ export = {
       ],
       "pathGroupsExcludedImportTypes": [ "builtin" ]
     }
-  ]
+  ],
+  "no-control-regex": "off"
 };
