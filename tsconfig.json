@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "lib": ["es2017"],
+    "lib": [
+      "ES6"
+    ],
     "module": "CommonJS",
     "moduleResolution": "node",
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true,
     "experimentalDecorators": true,
-    "target": "es2017",
+    "target": "ES6",
     // Set to true later, for now leave as false during development
     "noUnusedLocals": false,
     // Set to true later, for now leave as false during development
@@ -19,7 +21,9 @@
     "rootDir": "./src",
     "outDir": "dist",
     "paths": {
-      "src/*": ["./src/*"],
+      "src/*": [
+        "./src/*"
+      ]
     }
   }
 }
