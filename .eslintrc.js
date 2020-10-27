@@ -4,6 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 const eslint_1 = __importDefault(require("./dist/rules/eslint"));
 const typescript_1 = __importDefault(require("./dist/rules/typescript"));
+const javascript_typescript_1 = __importDefault(require("./dist/overrides/javascript-typescript"));
 const json_eslint_1 = __importDefault(require("./dist/overrides/json-eslint"));
 const json_typescript_1 = __importDefault(require("./dist/overrides/json-typescript"));
 
@@ -20,6 +21,7 @@ module.exports = {
     }
   ),
   overrides: [
+    ...javascript_typescript_1.default,
     ...json_eslint_1.default,
     ...json_typescript_1.default,
     {
