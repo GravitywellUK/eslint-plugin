@@ -1,9 +1,7 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "lib": [
-      "ES6"
-    ],
+    "lib": [ "ES6" ],
     "module": "CommonJS",
     "moduleResolution": "node",
     "skipLibCheck": true,
@@ -21,9 +19,7 @@
     "rootDir": "./src",
     "outDir": "dist",
     "paths": {
-      "src/*": [
-        "./src/*"
-      ]
+      "src/*": [ "./src/*" ]
     }
   }
 }
