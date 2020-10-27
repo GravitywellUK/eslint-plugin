@@ -15,9 +15,7 @@
     "url": "https://github.com/GravitywellUK/eslint-plugin/issues"
   },
   "author": "GravitywellUK",
-  "contributors": [
-    "Luke Baker <luke.baker@live.com>"
-  ],
+  "contributors": [ "Luke Baker <luke.baker@live.com>" ],
   "main": "dist/index.js",
   "license": "MIT",
   "private": false,
@@ -36,16 +34,16 @@
   ],
   "scripts": {
     "build": "./node_modules/.bin/tsc -b",
+    "build:clean": "rm -Rf dist/ && yarn build --clean && yarn build",
     "start": "yarn build -w",
-    "clean": "rm -Rf dist/ && yarn build --clean",
     "check:clean-diff-after-install": "git diff --quiet --exit-code",
-    "lint": "eslint . --ext .js,.ts",
+    "lint": "eslint . --ext .js,.ts,.json",
     "lint:fix": "yarn lint --fix",
     "lint:debug": "yarn lint --debug",
     "post-checkout": "yarn",
-    "post-merge": "yarn && yarn build",
-    "pre-commit": "yarn lint:fix",
-    "pre-push": "yarn clean && yarn lint"
+    "post-merge": "yarn && yarn build:clean",
+    "pre-commit": "yarn lint-staged",
+    "pre-push": "yarn build:clean"
   },
   "husky": {
     "hooks": {
@@ -55,10 +53,14 @@
       "pre-push": "yarn pre-push"
     }
   },
+  "lint-staged": {
+    "*.{js,ts,json}": [ "eslint --fix" ]
+  },
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^4.2.0",
     "@typescript-eslint/parser": "^4.3.0",
     "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-json": "^2.1.2",
     "eslint-plugin-react": "^7.21.2",
     "eslint-plugin-react-hooks": "^4.1.2",
     "eslint-plugin-react-native": "^3.10.0"
@@ -68,6 +70,7 @@
     "@types/node": "^14.11.2",
     "eslint": "^7.10.0",
     "husky": "^4.3.0",
+    "lint-staged": "^10.5.0",
     "typescript": "^4.0.3"
   },
   "peerDependencies": {

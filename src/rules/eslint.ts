@@ -29,6 +29,7 @@ export = {
     }
   ],
   "comma-dangle": [ "error", "never" ],
+  "no-trailing-spaces": [ "error" ],
   "operator-linebreak": [ "error", "after" ],
   "brace-style": [ "error" ],
   "no-multiple-empty-lines": [
