@@ -20,7 +20,7 @@
   "editor.formatOnSave": false,
   "[typescript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
-    "editor.formatOnSave": false
+    "editor.formatOnSave": true
   },
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
@@ -33,5 +33,5 @@
   "[jsonc]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint",
     "editor.formatOnSave": true
-  },
+  }
 }
