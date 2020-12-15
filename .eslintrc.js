@@ -23,10 +23,6 @@ module.exports = {
   overrides: [
     ...javascript_typescript_1.default,
     ...json_eslint_1.default,
-    ...json_typescript_1.default,
-    {
-      files: "*.js",
-      rules: { "@typescript-eslint/no-var-requires": [ "off" ] }
-    }
+    ...json_typescript_1.default
   ]
 };
