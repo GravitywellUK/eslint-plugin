@@ -5,7 +5,7 @@ export = [
       "object-curly-newline": [ "off" ],
       "quote-props": [ "off" ],
       "semi": [ "off" ],
-      "array-bracket-newline": [ "error", "always" ]
+      "array-bracket-newline": [ "error", { minItems: 1 } ]
     }
   }
 ];
