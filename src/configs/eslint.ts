@@ -1,6 +1,6 @@
 export = {
   env: { es6: true },
-  plugins: [ "import" ],
+  plugins: [ "import", "modules-newline" ],
   extends: [
     "eslint:recommended",
     "plugin:import/errors",

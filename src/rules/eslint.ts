@@ -269,5 +269,7 @@ export = {
       ],
       "pathGroupsExcludedImportTypes": [ "builtin" ]
     }
-  ]
+  ],
+  "modules-newline/import-declaration-newline": "warn",
+  "modules-newline/export-declaration-newline": "warn"
 };
