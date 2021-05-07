@@ -206,6 +206,7 @@ export = {
   "no-restricted-modules": [ 2, { patterns: [ "../*" ] } ],
   "no-console": [ "warn", { allow: [ "warn", "error" ] } ],
   "no-alert": [ "warn" ],
+  "no-control-regex": "off",
   "import/no-unresolved": [ "off" ],
   "import/namespace": [ "off" ],
   "import/no-named-as-default": [ "off" ],
@@ -242,9 +243,12 @@ export = {
       "groups": [
         "builtin",
         "external",
-        [ "internal", "parent" ],
-        "index",
-        "sibling",
+        "internal",
+        [
+          "index",
+          "parent",
+          "sibling"
+        ],
         "object",
         "unknown"
       ],
@@ -266,5 +270,6 @@ export = {
       "pathGroupsExcludedImportTypes": [ "builtin" ]
     }
   ],
-  "no-control-regex": "off"
+  "modules-newline/import-declaration-newline": "warn",
+  "modules-newline/export-declaration-newline": "warn"
 };
