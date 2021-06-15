@@ -64,6 +64,8 @@ This includes the following plugins and rules including Gravitywell's own overri
 - eslint-plugin-import
   - plugin:import/errors
   - plugin:import/warnings
+- eslint-plugin-json
+  - plugin:json/recommended
 
 ### `@gravitywelluk/typescript-recommended`
 
