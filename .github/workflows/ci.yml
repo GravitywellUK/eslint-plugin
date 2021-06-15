@@ -59,10 +59,11 @@ jobs:
 
       # Install package dependencies
       - name: Install package dependencies
-        # --ignore-engines  - ignore engines check
-        # --frozen-lockfile - don't generate a lockfile and fail if an update is needed
-        # --ignore-scripts  - don't run lifecycle scripts
-        run: yarn --ignore-engines --frozen-lockfile --ignore-scripts
+        # --immutable          Abort with an error exit code if the lockfile was to be modified
+        # --immutable-cache    Abort with an error exit code if the cache folder was to be modified
+        # --check-cache        Always refetch the packages and ensure that their checksums are consistent
+        # --skip-builds        Skip the build step altogether
+        run: yarn install --immutable --immutable-cache --check-cache --skip-builds
 
       # Ensure package build successfully
       - name: Ensure package build successfully
@@ -115,10 +116,11 @@ jobs:
 
       # Install package dependencies
       - name: Install package dependencies
-        # --ignore-engines  - ignore engines check
-        # --frozen-lockfile - don't generate a lockfile and fail if an update is needed
-        # --ignore-scripts  - don't run lifecycle scripts
-        run: yarn --ignore-engines --frozen-lockfile --ignore-scripts
+        # --immutable          Abort with an error exit code if the lockfile was to be modified
+        # --immutable-cache    Abort with an error exit code if the cache folder was to be modified
+        # --check-cache        Always refetch the packages and ensure that their checksums are consistent
+        # --skip-builds        Skip the build step altogether
+        run: yarn install --immutable --immutable-cache --check-cache --skip-builds
 
       # Ensure package build successfully
       - name: Ensure package build successfully
