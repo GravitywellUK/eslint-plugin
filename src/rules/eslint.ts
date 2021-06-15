@@ -270,6 +270,7 @@ export = {
       "pathGroupsExcludedImportTypes": [ "builtin" ]
     }
   ],
+  "json/*": [ "error", { allowComments: true } ],
   "modules-newline/import-declaration-newline": "warn",
   "modules-newline/export-declaration-newline": "warn"
 };
