@@ -20,7 +20,6 @@
   ],
   "main": "dist/index.js",
   "license": "MIT",
-  "private": false,
   "engines": {
     "node": "^10.12.0 || >=12.0.0"
   },
@@ -62,7 +61,6 @@
     "eslint-plugin-react-native": "^3.10.0"
   },
   "devDependencies": {
-    "@gravitywelluk/eslint-plugin": "^1.0.1",
     "@types/node": "^15.0.2",
     "eslint": "^7.25.0",
     "husky": "^6.0.0",
