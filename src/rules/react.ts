@@ -70,6 +70,14 @@ export = {
       prop: "parens-new-line"
     }
   ],
+  "react/jsx-no-target-blank": [
+    "error",
+    {
+      allowReferrer: true,
+      enforceDynamicLinks: "always",
+      warnOnSpreadAttributes: true
+    }
+  ],
   "react-hooks/rules-of-hooks": [ "error" ],
   "react-hooks/exhaustive-deps": [ "error" ]
 };
