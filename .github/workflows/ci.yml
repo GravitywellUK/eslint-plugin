@@ -45,7 +45,7 @@ jobs:
       # Get yarn cache directory path
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       # Retrieve cached dependencies
       - name: Retrieve cached dependencies
@@ -58,12 +58,8 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # Install package dependencies
-      - name: Install package dependencies
-        # --immutable          Abort with an error exit code if the lockfile was to be modified
-        # --immutable-cache    Abort with an error exit code if the cache folder was to be modified
-        # --check-cache        Always refetch the packages and ensure that their checksums are consistent
-        # --skip-builds        Skip the build step altogether
-        run: yarn install --immutable --immutable-cache --check-cache --skip-builds
+      - name: Install dependencies
+        run: yarn install --immutable
 
       # Ensure package build successfully
       - name: Ensure package build successfully
@@ -102,7 +98,7 @@ jobs:
       # Get yarn cache directory path
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
-        run: echo "::set-output name=dir::$(yarn cache dir)"
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
 
       # Retrieve cached dependencies
       - name: Retrieve cached dependencies
@@ -115,12 +111,8 @@ jobs:
             ${{ runner.os }}-yarn-
 
       # Install package dependencies
-      - name: Install package dependencies
-        # --immutable          Abort with an error exit code if the lockfile was to be modified
-        # --immutable-cache    Abort with an error exit code if the cache folder was to be modified
-        # --check-cache        Always refetch the packages and ensure that their checksums are consistent
-        # --skip-builds        Skip the build step altogether
-        run: yarn install --immutable --immutable-cache --check-cache --skip-builds
+      - name: Install dependencies
+        run: yarn install --immutable
 
       # Ensure package build successfully
       - name: Ensure package build successfully
