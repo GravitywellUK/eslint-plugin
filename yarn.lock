@@ -173,7 +173,7 @@ __metadata:
     pinst: ^2.1.6
     typescript: ^4.3.5
   peerDependencies:
-    eslint: ^7.25.0
+    eslint: ^7.32.0
   languageName: unknown
   linkType: soft
 
