@@ -114,7 +114,7 @@ export = {
   ],
   "keyword-spacing": [ "error" ],
   "space-before-blocks": [ "error" ],
-  "space-in-parens": [ "error" ],
+  "space-in-parens": [ "error", "never" ],
   "array-bracket-newline": [
     "error",
     {

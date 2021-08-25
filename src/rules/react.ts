@@ -53,7 +53,7 @@ export = {
   "react/jsx-max-props-per-line": [
     "error",
     {
-      when: "multiline",
+      when: "always",
       maximum: 1
     }
   ],
@@ -76,6 +76,14 @@ export = {
       allowReferrer: true,
       enforceDynamicLinks: "always",
       warnOnSpreadAttributes: true
+    }
+  ],
+  "react/jsx-newline": [ "error", { prevent: false } ],
+  "react/self-closing-comp": [
+    "error",
+    {
+      component: true,
+      html: true
     }
   ],
   "react-hooks/rules-of-hooks": [ "error" ],
