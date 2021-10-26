@@ -26,5 +26,16 @@ export = {
       default: "array-simple",
       readonly: "array-simple"
     }
+  ],
+  "@typescript-eslint/naming-convention": [
+    "error",
+    {
+      selector: "typeLike",
+      format: [ "PascalCase" ]
+    },
+    {
+      selector: "enumMember",
+      format: [ "UPPER_CASE", "PascalCase" ]
+    }
   ]
 };
