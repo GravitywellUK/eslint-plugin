@@ -4,6 +4,13 @@ export = {
   "quote-props": [ "error", "consistent-as-needed" ],
   "semi": [ "error", "always" ],
   "semi-style": [ "error", "last" ],
+  "import-newlines/enforce": [
+    "error",
+    {
+      items: 1,
+      semi: true
+    }
+  ],
   "indent": [
     "error",
     2,
@@ -270,7 +277,5 @@ export = {
       "pathGroupsExcludedImportTypes": [ "builtin" ]
     }
   ],
-  "json/*": [ "error", { allowComments: true } ],
-  "modules-newline/import-declaration-newline": "warn",
-  "modules-newline/export-declaration-newline": "warn"
+  "json/*": [ "error", { allowComments: true } ]
 };
