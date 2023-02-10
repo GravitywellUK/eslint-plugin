@@ -82,8 +82,6 @@ jobs:
       # Checks-out your repository
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.GH_AUTH_TOKEN }}
 
       - name: echo github.ref
         run: echo ${{ github.ref }}
