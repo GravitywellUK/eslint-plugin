@@ -31,7 +31,7 @@ jobs:
     steps:
       # Checks-out your repository
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       - name: echo github.ref
         run: echo ${{ github.ref }}
@@ -49,7 +49,7 @@ jobs:
 
       # Retrieve cached dependencies
       - name: Retrieve cached dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
@@ -81,7 +81,7 @@ jobs:
     steps:
       # Checks-out your repository
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GH_AUTH_TOKEN }}
 
@@ -90,7 +90,7 @@ jobs:
 
       # Setup Node.js environment
       - name: Setup Node.js environment
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
           registry-url: "https://registry.npmjs.org"
@@ -102,7 +102,7 @@ jobs:
 
       # Retrieve cached dependencies
       - name: Retrieve cached dependencies
-        uses: actions/cache@v2
+        uses: actions/cache@v4
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
