@@ -21,7 +21,7 @@ on:
       - '**'
 
 env:
-  NODE_VERSION: 20
+  NODE_VERSION: 18
 
 jobs:
   build-and-test:
@@ -38,7 +38,7 @@ jobs:
 
       # Setup Node.js environment
       - name: Setup Node.js environment
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ env.NODE_VERSION }}
 
