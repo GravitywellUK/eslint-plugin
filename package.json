@@ -1,7 +1,7 @@
 {
   "name": "@gravitywelluk/eslint-plugin",
   "description": "Gravitywell defined ESLint rule sets as an ESLint plugin",
-  "version": "5.0.0",
+  "version": "4.0.1",
   "keywords": [
     "gravitywell",
     "gravitywelluk",
@@ -22,7 +22,7 @@
   "license": "MIT",
   "engines": {
     "node": ">=18.0.0"
-  },  
+  },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
     "access": "public"
@@ -51,7 +51,7 @@
     ]
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
+    "@types/node": "^18.0.0",
     "@typescript-eslint/eslint-plugin": "6.21.0",
     "@typescript-eslint/parser": "6.21.0",
     "eslint": "^8.56.0",
